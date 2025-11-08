@@ -8,8 +8,9 @@
 // Return randomized value
 // Call function and console.log return value to check if it works as expected
 
+// Generates random number between 0-2
 const getRandomNumber = () => {
-  return Math.floor(Math.random() * 3); //randomize number between 1-3
+  return Math.floor(Math.random() * 3);
 };
 
 const getComputorChoice = () => {
@@ -31,3 +32,30 @@ const getComputorChoice = () => {
 };
 
 console.log(getComputorChoice());
+
+// Create named getHumanChoice that prompts users for a number between 1-3
+// IF null return no choice made
+// IF other that 1-3 prompt again asking for valig input
+// IF 1 return Rock, if 2 return Paper and if 3 return Scissors
+// Create a variable named humanChoice
+
+const getHumanChoice = () => {
+  let humanChoice =
+    Number(prompt("Enter 1 for Rock, 2 for Paper or 3 for Scissors")) || null;
+
+  if (humanChoice === null) {
+    return "No choice made.";
+  } else if (![1, 2, 3].includes(humanChoice)) {
+    return prompt("wrong entry, try again.");
+  } else if (humanChoice === 1) {
+    humanChoice = "Rock";
+  } else if (humanChoice === 2) {
+    humanChoice = "Paper";
+  } else if (humanChoice === 3) {
+    humanChoice = "Scissors";
+  }
+
+  return humanChoice;
+};
+
+console.log(getHumanChoice());
