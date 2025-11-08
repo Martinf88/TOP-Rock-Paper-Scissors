@@ -1,4 +1,4 @@
-// Create function getComputorChoice
+// Create function getComputerChoice
 // Create variable named computorChoice to store randomized value in
 // Create function getRandomNumber that generates and returns a random number
 // between 1-3
@@ -13,7 +13,7 @@ const getRandomNumber = () => {
   return Math.floor(Math.random() * 3);
 };
 
-const getComputorChoice = () => {
+const getComputerChoice = () => {
   let computorChoice = getRandomNumber();
 
   if (computorChoice < 0 || computorChoice > 2) {
@@ -31,7 +31,7 @@ const getComputorChoice = () => {
   return computorChoice;
 };
 
-console.log(getComputorChoice());
+console.log(getComputerChoice());
 
 // Create named getHumanChoice that prompts users for a number between 1-3
 // IF null return no choice made
@@ -59,3 +59,6 @@ const getHumanChoice = () => {
 };
 
 console.log(getHumanChoice());
+
+let computerScore = 0;
+let humanScore = 0;
