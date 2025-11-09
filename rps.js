@@ -31,8 +31,6 @@ const getComputerChoice = () => {
   return computorChoice;
 };
 
-console.log(getComputerChoice());
-
 // Create named getHumanChoice that prompts users for a number between 1-3
 // IF null return no choice made
 // IF other that 1-3 prompt again asking for valig input
@@ -58,7 +56,43 @@ const getHumanChoice = () => {
   return humanChoice;
 };
 
-console.log(getHumanChoice());
-
 let computerScore = 0;
 let humanScore = 0;
+
+// Create function playRound that takes two arguments, humanChoice and computerChoice
+// Define variables humanSelection and computorSelection to equal getHumanChoice and getComputerChoice
+// IF statement for gamelogic, Rock beats Scissors, Scissors beats Paper, Paper beats Rock
+// Log Result of who wone
+// Update humanScore or computerScore
+
+const playRound = (humanChoice, computerChoice) => {
+  const humanWinMessage = `You Won! ${humanChoice} beats ${computerChoice}`;
+  const computerWinMessage = `You lost! ${computerChoice} beats ${humanChoice}`;
+
+  if (humanChoice === "Rock" && computerChoice === "Scissors") {
+    humanScore++;
+    return humanWinMessage;
+  } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+    humanScore++;
+    return humanWinMessage;
+  } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+    humanScore++;
+    return humanWinMessage;
+  } else if (computerChoice === "Rock" && humanChoice === "Scissors") {
+    computerScore++;
+    return computerWinMessage;
+  } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+    computerScore++;
+    return computerWinMessage;
+  } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+    computerScore++;
+    return computerWinMessage;
+  } else if (computerChoice === humanChoice) {
+    return `Draw! ${computerChoice} and ${humanChoice}`;
+  }
+};
+
+const humanSelection = getHumanChoice();
+const computorSelection = getComputerChoice();
+
+console.log(playRound(humanSelection, computorSelection));
