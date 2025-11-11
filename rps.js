@@ -56,43 +56,67 @@ const getHumanChoice = () => {
   return humanChoice;
 };
 
-let computerScore = 0;
-let humanScore = 0;
-
 // Create function playRound that takes two arguments, humanChoice and computerChoice
 // Define variables humanSelection and computorSelection to equal getHumanChoice and getComputerChoice
 // IF statement for gamelogic, Rock beats Scissors, Scissors beats Paper, Paper beats Rock
 // Log Result of who wone
 // Update humanScore or computerScore
 
-const playRound = (humanChoice, computerChoice) => {
-  const humanWinMessage = `You Won! ${humanChoice} beats ${computerChoice}`;
-  const computerWinMessage = `You lost! ${computerChoice} beats ${humanChoice}`;
+/*Create a new function named playGame.
+Move your playRound function and score variables so that they’re declared inside of the new playGame function
+Play 5 rounds by calling playRound 5 times.
+Hint: When you assign a function call to a variable, the return value of that function is assigned to the variable. Accessing the variable afterward will only provide the assigned value; it doesn’t recall the function. You need to recall the choice functions to get new choices for each round.
+Re-work your previous functions or create more helper functions if necessary. Specifically, you may want to change the return values to something more useful.
+If you already know about loops, you can use them. If not, don’t worry! Loops will be covered in the next lesson.*/
 
-  if (humanChoice === "Rock" && computerChoice === "Scissors") {
-    humanScore++;
-    return humanWinMessage;
-  } else if (humanChoice === "Paper" && computerChoice === "Rock") {
-    humanScore++;
-    return humanWinMessage;
-  } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
-    humanScore++;
-    return humanWinMessage;
-  } else if (computerChoice === "Rock" && humanChoice === "Scissors") {
-    computerScore++;
-    return computerWinMessage;
-  } else if (computerChoice === "Paper" && humanChoice === "Rock") {
-    computerScore++;
-    return computerWinMessage;
-  } else if (computerChoice === "Paper" && humanChoice === "Rock") {
-    computerScore++;
-    return computerWinMessage;
-  } else if (computerChoice === humanChoice) {
-    return `Draw! ${computerChoice} and ${humanChoice}`;
+// Create function named playGame.
+// Move playRound function and score variables inside playGame function.
+// Create a loop and call playRound 5 times and keep track of score
+// Log out the winner based on the highest score
+
+const playGame = () => {
+  let computerScore = 0;
+  let humanScore = 0;
+
+  const playRound = (humanChoice, computerChoice) => {
+    const scoreMessage = `You: ${humanScore}. Computer: ${computerScore}`;
+    const humanWinMessage = `You Won! ${humanChoice} beats ${computerChoice} Score: ${scoreMessage}`;
+    const computerWinMessage = `You lost! ${computerChoice} beats ${humanChoice} Score: ${scoreMessage}`;
+
+    if (humanChoice === "Rock" && computerChoice === "Scissors") {
+      humanScore++;
+
+      return humanWinMessage;
+    } else if (humanChoice === "Paper" && computerChoice === "Rock") {
+      humanScore++;
+      return humanWinMessage;
+    } else if (humanChoice === "Scissors" && computerChoice === "Paper") {
+      humanScore++;
+      return humanWinMessage;
+    } else if (computerChoice === "Rock" && humanChoice === "Scissors") {
+      computerScore++;
+      return computerWinMessage;
+    } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+      computerScore++;
+      return computerWinMessage;
+    } else if (computerChoice === "Paper" && humanChoice === "Rock") {
+      computerScore++;
+      return computerWinMessage;
+    } else if (computerChoice === humanChoice) {
+      return `Draw! ${computerChoice} and ${humanChoice}`;
+    }
+  };
+
+  for (i = 0; i < 5; i++) {
+    const humanSelection = getHumanChoice();
+    const computorSelection = getComputerChoice();
+    console.log(playRound(humanSelection, computorSelection));
   }
+
+  const winnerIsComp = `Game Over. Computer won ${computerScore} to ${humanScore}`;
+  const winnerIsHuman = `Game Over. You won ${humanScore} to ${computerScore}`;
+
+  console.log(humanScore > computerScore ? winnerIsHuman : winnerIsComp);
 };
 
-const humanSelection = getHumanChoice();
-const computorSelection = getComputerChoice();
-
-console.log(playRound(humanSelection, computorSelection));
+playGame();
