@@ -1,4 +1,10 @@
-const choiceBtns = document.querySelectorAll("button");
+const playerButtons = document.querySelectorAll(".choice-btn");
+const resultContainer = document.querySelector(".result");
+const humanScoreDiv = document.querySelector(".human-score");
+const computerScoreDiv = document.querySelector(".computer-score");
+const wonGamesDiv = document.querySelector(".won-games");
+const lostGamesDiv = document.querySelector(".lost-games");
+const newGameBtn = document.querySelector(".new-game-btn");
 
 const getRandomNumber = () => {
   return Math.floor(Math.random() * 3);
@@ -44,50 +50,71 @@ const getHumanChoice = (id) => {
   return humanChoice;
 };
 
+newGameBtn.disabled = true;
+
 const playGame = () => {
+  const initWins = 0;
+  const initLosses = 0;
+  const initCompScore = 0;
+  const initHumanScore = 0;
+
+  humanScoreDiv.innerHTML = initHumanScore;
+  computerScoreDiv.innerHTML = initCompScore;
+  lostGamesDiv.innerHTML = initWins;
+  wonGamesDiv.innerHTML = initLosses;
+
+  let wonGames = 0;
+  let lostGames = 0;
   let computerScore = 0;
   let humanScore = 0;
 
   const playRound = (humanChoice, computerChoice) => {
-    const scoreMessage = `You: ${humanScore}. Computer: ${computerScore}`;
+    // IF computer score or human score is 5 after a round is played
+    // the game is over
+    // lock all playerButtons buttons
+    // Display win message
+    //Display won games
+    // Update wonGames varibel
+    // When reset button is clicked reset both human and computer score
 
-    let winMessage = "";
-    const humanWinMessage = `You Won! ${humanChoice} beats ${computerChoice} Score: ${scoreMessage}`;
-    const computerWinMessage = `You lost! ${computerChoice} beats ${humanChoice} Score: ${scoreMessage}`;
+    let roundWinMessage = "";
+    let gameWinMessage = "";
+    const humanRoundWinMessage = `You Won! ${humanChoice} beats ${computerChoice}`;
+    const computerRoundWinMessage = `You lost! ${computerChoice} beats ${humanChoice}`;
 
     switch (humanChoice) {
       case "Rock":
         if (computerChoice === "Paper") {
           computerScore++;
-          winMessage = computerWinMessage;
+          roundWinMessage = computerRoundWinMessage;
         } else if (computerChoice === "Scissors") {
           humanScore++;
-          winMessage = humanWinMessage;
+          roundWinMessage = humanRoundWinMessage;
         } else {
-          winMessage = `Draw! ${computerChoice} and ${humanChoice}`;
+          roundWinMessage = `Draw! ${computerChoice} and ${humanChoice}`;
         }
         break;
       case "Paper":
         if (computerChoice === "Scissors") {
           computerScore++;
-          winMessage = computerWinMessage;
+          roundWinMessage = computerRoundWinMessage;
         } else if (computerChoice === "Rock") {
           humanScore++;
-          winMessage = humanWinMessage;
+          roundWinMessage = humanRoundWinMessage;
         } else {
-          winMessage = `Draw! ${computerChoice} and ${humanChoice}`;
+          roundWinMessage = `Draw! ${computerChoice} and ${humanChoice}`;
         }
 
         break;
       case "Scissors":
         if (computerChoice === "Rock") {
           computerScore++;
-          winMessage = computerWinMessage;
+          roundWinMessage = computerRoundWinMessage;
         } else if (computerChoice === "Paper") {
           humanScore++;
-          winMessage = humanWinMessage;
+          roundWinMessage = humanRoundWinMessage;
         } else {
-          winMessage = `Draw! ${computerChoice} and ${humanChoice}`;
+          roundWinMessage = `Draw! ${computerChoice} and ${humanChoice}`;
         }
         break;
 
@@ -95,29 +122,50 @@ const playGame = () => {
         break;
     }
 
-    return winMessage;
+    const humanGameWinMessage = `You Won! ${humanScore} to ${computerScore}`;
+    const computerGameWinMessage = `You lost! ${computerScore} to ${humanScore}`;
+
+    humanScoreDiv.innerHTML = humanScore;
+    computerScoreDiv.innerHTML = computerScore;
+
+    if (humanScore === 5 || computerScore === 5) {
+      if (humanScore === 5) {
+        wonGames++;
+        wonGamesDiv.innerHTML = wonGames;
+        gameWinMessage = humanGameWinMessage;
+      } else {
+        lostGames++;
+        lostGamesDiv.innerHTML = lostGames;
+        gameWinMessage = computerGameWinMessage;
+      }
+      playerButtons.forEach((button) => (button.disabled = true));
+      newGameBtn.disabled = false;
+
+      return gameWinMessage;
+    }
+
+    return roundWinMessage;
   };
 
-  // Add an eventlistener to all choiceBtns
-  // Create const humanSelection,
-  // it should call getHumanChoice and send event.target
-  // Create const computorSelection = getComputorChoice
-  // log playRound(humanSelection, computorSelection)
+  newGameBtn.addEventListener("click", () => {
+    humanScoreDiv.innerHTML = initHumanScore;
+    computerScoreDiv.innerHTML = initCompScore;
+    resultContainer.innerHTML = "";
+    playerButtons.forEach((button) => (button.disabled = false));
+    newGameBtn.disabled = true;
+  });
 
-  choiceBtns.forEach((btn) =>
+  playerButtons.forEach((btn) =>
     btn.addEventListener("click", function (e) {
       const humanSelection = getHumanChoice(e.target.id);
 
       const computorSelection = getComputerChoice();
-      console.log(humanSelection, computorSelection);
-      console.log(playRound(humanSelection, computorSelection));
+
+      resultContainer.innerHTML = playRound(humanSelection, computorSelection);
     })
   );
 
-  const winnerIsComp = `Game Over. Computer won ${computerScore} to ${humanScore}`;
-  const winnerIsHuman = `Game Over. You won ${humanScore} to ${computerScore}`;
-
-  console.log(humanScore > computerScore ? winnerIsHuman : winnerIsComp);
+  // console.log(humanScore > computerScore ? winnerIsHuman : winnerIsComp);
 };
 
 playGame();
