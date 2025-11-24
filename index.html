@@ -4,27 +4,49 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ROCK PAPER SCISSORS</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="score-container container">
-      <div class="score-board">
-        <p>YOU</p>
-        <div class="human-score"></div>
-        <p>COMPUTER</p>
-        <div class="computer-score"></div>
-      </div>
-      <p>WINS</p>
-      <div class="won-games"></div>
-      <p>LOSSES</p>
-      <div class="lost-games"></div>
+    <header>
       <button class="new-game-btn">New Game</button>
-    </div>
-    <div class="buttons-container container">
-      <button class="choice-btn" id="rock">Rock</button>
-      <button class="choice-btn" id="paper">Paper</button>
-      <button class="choice-btn" id="scissors">Scissors</button>
-    </div>
-    <div class="result"></div>
+      <h1 class="title">ROCK PAPER SCISSORS</h1>
+      <div class="total-score">
+        <p>WINS</p>
+        <div class="won-games"></div>
+        <p>LOSSES</p>
+        <div class="lost-games"></div>
+      </div>
+    </header>
+    <main>
+      <div class="score-container container">
+        <div class="score-board">
+          <div class="human-score-wrapper">
+            <p>YOU</p>
+            <div class="human-score"></div>
+          </div>
+          <div class="computer-score-wrapper">
+            <p>COMPUTER</p>
+            <div class="computer-score"></div>
+          </div>
+        </div>
+      </div>
+      <div class="buttons-container container">
+        <button class="choice-btn" id="rock">Rock</button>
+        <button class="choice-btn" id="paper">Paper</button>
+        <button class="choice-btn" id="scissors">Scissors</button>
+      </div>
+      <div class="result"></div>
+    </main>
+
+    <footer>
+      <p>Martin Fahlström - November 2025</p>
+    </footer>
 
     <script src="rps.js"></script>
   </body>
