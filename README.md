@@ -2,6 +2,7 @@
 
 Part of The Odin Project Foundations Course
 
-As of now the game runs only in the console.
-The user types a number in a prompt.
-The game runs for five rounds.
+Play five rounds of rock paper scissors against a computer.
+Make your choice using one of the three buttons.
+When game is over start a new game by pressing the new game button.
+Total number of wins and losses will be remembered until window refresh.
