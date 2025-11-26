@@ -2,9 +2,36 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: blueviolet;
+  background-color: #bc26d9;
   color: white;
   font-family: "Roboto Mono", monospace;
+}
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.total-score {
+  display: flex;
+  gap: 2em;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.wrapper > p {
+  margin: 0;
+}
+
+.total-wrapper {
+  font-size: 1.5em;
 }
 
 main {
@@ -13,28 +40,75 @@ main {
   flex-direction: column;
   align-items: center;
   gap: 2em;
+  padding: 8em;
 }
 
-.title {
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  gap: 2em;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  padding: 8px 24px;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+button:hover {
+  opacity: 85%;
+}
+
+button:disabled {
+  opacity: 50%;
+  cursor: default;
+}
+
+.choice-btn {
+  background-color: #6226d9;
+}
+
+.new-game-btn {
+  background-color: #43d926;
+}
+
+.title,
+.result {
   text-align: center;
 }
 
 .score-container {
   display: flex;
-
   flex-direction: column;
-  align-items: end;
+  align-items: center;
+  justify-content: start;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 0 4em;
 }
 
 .score-board {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 2em;
 }
 
-.human-score-wrapper,
-.computer-score-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.score-wrapper {
+  font-size: 2em;
+}
+
+.result {
+  font-size: 1.5em;
 }

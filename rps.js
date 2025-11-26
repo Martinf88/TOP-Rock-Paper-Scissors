@@ -122,8 +122,8 @@ const playGame = () => {
         break;
     }
 
-    const humanGameWinMessage = `You Won! ${humanScore} to ${computerScore}`;
-    const computerGameWinMessage = `You lost! ${computerScore} to ${humanScore}`;
+    const humanGameWinMessage = `Game Over! You Won.`;
+    const computerGameWinMessage = `Game Over! You Lost.`;
 
     humanScoreDiv.innerHTML = humanScore;
     computerScoreDiv.innerHTML = computerScore;
@@ -151,6 +151,8 @@ const playGame = () => {
     humanScoreDiv.innerHTML = initHumanScore;
     computerScoreDiv.innerHTML = initCompScore;
     resultContainer.innerHTML = "";
+    computerScore = 0;
+    humanScore = 0;
     playerButtons.forEach((button) => (button.disabled = false));
     newGameBtn.disabled = true;
   });

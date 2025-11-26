@@ -17,31 +17,37 @@
       <button class="new-game-btn">New Game</button>
       <h1 class="title">ROCK PAPER SCISSORS</h1>
       <div class="total-score">
-        <p>WINS</p>
-        <div class="won-games"></div>
-        <p>LOSSES</p>
-        <div class="lost-games"></div>
+        <div class="total-wrapper wrapper">
+          <p>WINS</p>
+          <div class="won-games"></div>
+        </div>
+        <div class="total-wrapper wrapper">
+          <p>LOSSES</p>
+          <div class="lost-games"></div>
+        </div>
       </div>
     </header>
     <main>
-      <div class="score-container container">
-        <div class="score-board">
-          <div class="human-score-wrapper">
-            <p>YOU</p>
-            <div class="human-score"></div>
-          </div>
-          <div class="computer-score-wrapper">
-            <p>COMPUTER</p>
-            <div class="computer-score"></div>
+      <div class="container">
+        <div class="score-container">
+          <div class="score-board">
+            <div class="score-wrapper wrapper">
+              <p>PLAYER</p>
+              <div class="human-score"></div>
+            </div>
+            <div class="score-wrapper wrapper">
+              <p>COMPUTER</p>
+              <div class="computer-score"></div>
+            </div>
           </div>
         </div>
+        <div class="buttons-container">
+          <button class="choice-btn" id="rock">Rock</button>
+          <button class="choice-btn" id="paper">Paper</button>
+          <button class="choice-btn" id="scissors">Scissors</button>
+        </div>
+        <div class="result"></div>
       </div>
-      <div class="buttons-container container">
-        <button class="choice-btn" id="rock">Rock</button>
-        <button class="choice-btn" id="paper">Paper</button>
-        <button class="choice-btn" id="scissors">Scissors</button>
-      </div>
-      <div class="result"></div>
     </main>
 
     <footer>
